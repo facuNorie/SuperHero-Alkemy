@@ -1,6 +1,9 @@
 import React, { useState } from "react";
+import axios from "axios";
+import { useLocation } from "wouter";
 
 export default function LoginForm() {
+	const [, setLocation] = useLocation();
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 
@@ -12,15 +15,27 @@ export default function LoginForm() {
 	};
 	const sendLoginForm = e => {
 		e.preventDefault();
-		console.log("la nena no se compara");
+		try {
+			axios
+				.post("http://challenge-react.alkemy.org", {
+					email: email,
+					password: password,
+				})
+				.then(res => {
+					localStorage.setItem("token", res?.data?.token);
+					setLocation("/home");
+				});
+		} catch (error) {
+			console.log(error);
+		}
 	};
 	return (
 		<>
-			<div className="container py-5 px-3 border bg-light col-4 rounded">
+			<div className="container py-5 px-4 shadow-lg bg-light rounded col-12 col-md-5">
 				<div className="text-center mb-3">
-					<h5>
+					<h4>
 						<strong>Log in to build your team!</strong>
-					</h5>
+					</h4>
 				</div>
 				<form onSubmit={e => sendLoginForm(e)}>
 					<div className="form-floating mb-3">

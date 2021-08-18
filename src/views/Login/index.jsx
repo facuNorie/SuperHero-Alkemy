@@ -5,8 +5,13 @@ export default function Login() {
 	const value = useContext(AppContext);
 
 	return (
-		<div style={{ height: "100vh" }}>
-			<div className="container-fluid bg-dark h-100 d-flex align-items-center">
+		<div
+			style={{
+				backgroundImage: `url(https://wallpapercave.com/wp/wp8793838.jpg)`,
+				height: "100vh",
+			}}
+		>
+			<div className="container-fluid h-100 d-flex align-items-center">
 				<LoginForm />
 			</div>
 		</div>
