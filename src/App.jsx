@@ -17,6 +17,7 @@ function App() {
 			style={{
 				backgroundImage: `url(https://wallpapercave.com/wp/wp8793838.jpg)`,
 				height: "100vh",
+				overflow: "hidden",
 			}}
 		>
 			<AppProvider>
