@@ -8,9 +8,26 @@ export default function Nav() {
 		localStorage.removeItem("token");
 		setLocation("/login");
 	};
+
 	return (
-		<nav className="navbar navbar-dark bg-dark">
-			<form className="form-inline">
+		<nav className="navbar navbar-dark bg-dark justify-content-between">
+			<form className="form-inline px-3">
+				<button
+					className="btn btn-light"
+					type="button"
+					onClick={() => setLocation("/home")}
+				>
+					Home
+				</button>
+				<button
+					className="btn btn-light mx-3"
+					type="button"
+					onClick={() => setLocation("/search")}
+				>
+					Search
+				</button>
+			</form>
+			<form className="form-inline px-3">
 				<button
 					className="btn btn-outline-danger"
 					type="button"

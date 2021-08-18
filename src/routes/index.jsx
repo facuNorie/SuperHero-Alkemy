@@ -4,6 +4,7 @@ import Home from "../views/Home";
 import Login from "../views/Login";
 import NotFound from "../views/NotFound";
 import Nav from "../components/Nav";
+import Search from "../views/Search";
 
 export default function Routes() {
 	const [, params] = useRoute("/:id");
@@ -30,6 +31,16 @@ export default function Routes() {
 							<Redirect to={"/login"} />
 						) : (
 							<Home />
+						)
+					}
+				/>
+				<Route
+					path="/search"
+					component={() =>
+						localStorage.getItem("token") === null ? (
+							<Redirect to={"/login"} />
+						) : (
+							<Search />
 						)
 					}
 				/>

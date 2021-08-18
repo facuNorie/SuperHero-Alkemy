@@ -13,11 +13,16 @@ function App() {
 	}; */
 
 	return (
-		<>
+		<div
+			style={{
+				backgroundImage: `url(https://wallpapercave.com/wp/wp8793838.jpg)`,
+				height: "100vh",
+			}}
+		>
 			<AppProvider>
 				<Routes />
 			</AppProvider>
-		</>
+		</div>
 	);
 }
 
