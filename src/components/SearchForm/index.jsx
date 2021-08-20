@@ -3,10 +3,13 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import { AppContext } from "../../context/AppContext";
 
 export default function SearchForm() {
-	const { getSuperHero, top, setTop } = useContext(AppContext);
+	const { getSuperHero, top, setTop, setListOfResults, setSpinner } =
+		useContext(AppContext);
 	const searchSuperHero = search => {
+		setListOfResults([]);
 		getSuperHero(search);
 		setTop(true);
+		setSpinner(true);
 	};
 	return (
 		<div className="w-50">
