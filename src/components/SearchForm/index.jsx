@@ -3,8 +3,7 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import { AppContext } from "../../context/AppContext";
 
 export default function SearchForm() {
-	const [top, setTop] = useState(false);
-	const { getSuperHero } = useContext(AppContext);
+	const { getSuperHero, top, setTop } = useContext(AppContext);
 	const searchSuperHero = search => {
 		getSuperHero(search);
 		setTop(true);

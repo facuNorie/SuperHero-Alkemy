@@ -84,7 +84,7 @@ export default function LoginForm() {
 								disabled={isSubmitting}
 								className="btn btn-primary col-12 mb-2"
 							>
-								Submit
+								Login
 							</button>
 						</Form>
 					)}

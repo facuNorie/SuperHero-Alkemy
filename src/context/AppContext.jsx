@@ -5,6 +5,7 @@ export const AppContext = createContext();
 
 export const AppProvider = props => {
 	const [listOfResults, setListOfResults] = useState([]);
+	const [top, setTop] = useState(false);
 	const getSuperHero = hero => {
 		try {
 			axios
@@ -17,7 +18,7 @@ export const AppProvider = props => {
 		}
 	};
 	return (
-		<AppContext.Provider value={{ getSuperHero, listOfResults }}>
+		<AppContext.Provider value={{ getSuperHero, listOfResults, top, setTop }}>
 			{props.children}
 		</AppContext.Provider>
 	);
