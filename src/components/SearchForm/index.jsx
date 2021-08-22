@@ -1,6 +1,7 @@
-import React, { useState, useContext } from "react";
-import { Formik, Form, Field, ErrorMessage } from "formik";
+import React, { useContext } from "react";
+import { Formik, Form, Field } from "formik";
 import { AppContext } from "../../context/AppContext";
+import ErrorInput from "../ErrorInput";
 
 export default function SearchForm() {
 	const { getSuperHero, top, setTop, setListOfResults, setSpinner } =
@@ -53,13 +54,7 @@ export default function SearchForm() {
 								</button>
 							</div>
 						</div>
-						<div className="bg-danger d-inline-block rounded">
-							<ErrorMessage
-								name="search"
-								component="div"
-								style={{ color: "white", padding: "2px" }}
-							/>
-						</div>
+						<ErrorInput name="search" />
 					</Form>
 				)}
 			</Formik>

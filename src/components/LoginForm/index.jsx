@@ -2,6 +2,7 @@ import React from "react";
 import axios from "axios";
 import { useLocation } from "wouter";
 import { Formik, Form, Field, ErrorMessage } from "formik";
+import ErrorInput from ".././ErrorInput";
 
 export default function LoginForm() {
 	const [, setLocation] = useLocation();
@@ -36,14 +37,14 @@ export default function LoginForm() {
 					validate={values => {
 						const errors = {};
 						if (!values.email) {
-							errors.email = "Required";
+							errors.email = "⚠️ Required";
 						} else if (
 							!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
 						) {
-							errors.email = "Invalid email address";
+							errors.email = "⚠️ Invalid email address";
 						}
 						if (!values.password) {
-							errors.password = "Required";
+							errors.password = "⚠️ Required";
 						}
 						return errors;
 					}}
@@ -56,18 +57,19 @@ export default function LoginForm() {
 				>
 					{({ isSubmitting }) => (
 						<Form>
-							<div className="form-floating mb-3">
+							<div className="form-floating mb-2">
 								<Field
 									type="email"
 									name="email"
 									className="form-control"
 									id="floatingInput"
-									placeholder="name@example.com"
+									placeholder="email"
+									autoComplete="off"
 								/>
-								<ErrorMessage name="email" component="div" />
+								<ErrorInput name="email" />
 								<label htmlFor="floatingInput">Email address</label>
 							</div>
-							<div className="form-floating mb-3">
+							<div className="form-floating mb-2">
 								<Field
 									type="password"
 									name="password"
@@ -75,7 +77,7 @@ export default function LoginForm() {
 									id="floatingPassword"
 									placeholder="Password"
 								/>
-								<ErrorMessage name="password" component="div" />
+								<ErrorInput name="password" />
 								<label htmlFor="floatingPassword">Password</label>
 							</div>
 

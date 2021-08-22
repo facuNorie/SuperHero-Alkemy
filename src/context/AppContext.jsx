@@ -13,7 +13,6 @@ export const AppProvider = props => {
 				.get(`https://superheroapi.com/api.php/372344864528011/search/${hero}`)
 				.then(res => {
 					setListOfResults(res?.data.results);
-					console.log(res);
 					setSpinner(false);
 				})
 				.catch(e => console.log(e));

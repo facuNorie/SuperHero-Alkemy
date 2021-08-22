@@ -1,12 +1,15 @@
 import React, { useContext } from "react";
 import { AppContext } from "../../context/AppContext";
 import Spinner from ".././Spinner";
+import "./style.css";
 export default function ResulsOfSearch() {
-	const { listOfResults, top, spinner, setSpinner } = useContext(AppContext);
+	const { listOfResults, top, spinner } = useContext(AppContext);
 	return (
 		<div
 			className={
-				top ? "h-75 w-100 container-fluid overflow-auto rounded " : "false"
+				top
+					? "h-75 w-100 container-fluid overflow-auto rounded containerResults"
+					: "false"
 			}
 			style={top ? { backdropFilter: "blur(5px)" } : { overflow: "auto" }}
 		>
@@ -20,7 +23,7 @@ export default function ResulsOfSearch() {
 								<div className="card-img-overlay text-center d-flex flex-column justify-content-end">
 									<p className="card-title p-1 bg-light rounded">{item.name}</p>
 									<div>
-										<button className="btn btn-success">Add</button>
+										<button className="btn btn-success">Add to team</button>
 									</div>
 								</div>
 							</div>
