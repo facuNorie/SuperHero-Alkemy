@@ -5,7 +5,7 @@ import CardHero from "../CardHero";
 export default function MyTeam() {
 	const { myTeam } = useContext(AppContext);
 	const [, setLocation] = useLocation();
-
+	console.log(myTeam);
 	return (
 		<div
 			className="h-75 w-100 container-fluid overflow-auto"

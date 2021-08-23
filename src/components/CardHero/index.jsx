@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { AppContext } from "../../context/AppContext";
+import Powerstats from "../Powerstats";
 
 export default function CardHero({ hero, cardTeam, is_in_my_team }) {
 	const { addSuperHero, removeSuperHero } = useContext(AppContext);
@@ -18,9 +19,13 @@ export default function CardHero({ hero, cardTeam, is_in_my_team }) {
 					{hero.biography.alignment}
 				</p>
 				<div className="card-img-overlay text-center d-flex flex-column justify-content-end">
-					<div className="bg-light rounded mb-2">
-						<p className="card-title p-1 mb-0">{hero.name}</p>
-					</div>
+					{cardTeam ? (
+						<Powerstats hero={hero} />
+					) : (
+						<div className="bg-light rounded mb-2">
+							<p className="card-title p-1 mb-0">{hero.name}</p>
+						</div>
+					)}
 
 					<div>
 						{cardTeam ? (
