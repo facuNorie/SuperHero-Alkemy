@@ -1,9 +1,12 @@
 import React, { useContext } from "react";
 import { AppContext } from "../../context/AppContext";
 import Spinner from ".././Spinner";
+import CardHero from "../CardHero";
 import "./style.css";
 export default function ResulsOfSearch() {
-	const { listOfResults, top, spinner } = useContext(AppContext);
+	const { listOfResults, top, spinner, myTeam } = useContext(AppContext);
+	const idAllTeam = myTeam.map(hero => hero.id);
+
 	return (
 		<div
 			className={
@@ -15,19 +18,13 @@ export default function ResulsOfSearch() {
 		>
 			{spinner ? <Spinner /> : <span></span>}
 			<div className="row">
-				{listOfResults?.map(item => {
+				{listOfResults?.map(hero => {
 					return (
-						<div className="col-12 col-sm-4 col-lg-3 my-2" key={item.id}>
-							<div className="card h-100">
-								<img src={item.image.url} className="card-img h-100" />
-								<div className="card-img-overlay text-center d-flex flex-column justify-content-end">
-									<p className="card-title p-1 bg-light rounded">{item.name}</p>
-									<div>
-										<button className="btn btn-success">Add to team</button>
-									</div>
-								</div>
-							</div>
-						</div>
+						<CardHero
+							key={hero.id}
+							hero={hero}
+							is_in_my_team={idAllTeam.includes(hero.id) ? true : false}
+						/>
 					);
 				})}
 			</div>
