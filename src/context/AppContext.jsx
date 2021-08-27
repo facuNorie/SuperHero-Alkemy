@@ -36,6 +36,42 @@ export const AppProvider = props => {
 		const heroes = JSON.parse(localStorage.getItem("myTeam"));
 		setMyTeam(heroes);
 	};
+	const getTeamStats = () => {
+		/* No me gustó esta funcion*/
+		let powerstats = myTeam.map(hero => hero.powerstats);
+		let combat = powerstats.map(stats => parseInt(stats.combat));
+		combat = combat?.reduce(
+			(accumulator, currentValue) => accumulator + currentValue
+		);
+		let durability = powerstats.map(stats => parseInt(stats.durability));
+		durability = durability?.reduce(
+			(accumulator, currentValue) => accumulator + currentValue
+		);
+		let intelligence = powerstats.map(stats => parseInt(stats.intelligence));
+		intelligence = intelligence?.reduce(
+			(accumulator, currentValue) => accumulator + currentValue
+		);
+		let power = powerstats.map(stats => parseInt(stats.power));
+		power = power?.reduce(
+			(accumulator, currentValue) => accumulator + currentValue
+		);
+		let speed = powerstats.map(stats => parseInt(stats.speed));
+		speed = speed?.reduce(
+			(accumulator, currentValue) => accumulator + currentValue
+		);
+		let strength = powerstats.map(stats => parseInt(stats.strength));
+		strength = strength?.reduce(
+			(accumulator, currentValue) => accumulator + currentValue
+		);
+		return [
+			{ powername: "Combat", powervalue: combat },
+			{ powername: "Durability", powervalue: durability },
+			{ powername: "Intelligence", powervalue: intelligence },
+			{ powername: "Power", powervalue: power },
+			{ powername: "Speed", powervalue: speed },
+			{ powername: "Strength", powervalue: strength },
+		];
+	};
 
 	useEffect(() => {
 		JSON.parse(localStorage.getItem("myTeam")) !== null
@@ -56,6 +92,7 @@ export const AppProvider = props => {
 				addSuperHero,
 				myTeam,
 				removeSuperHero,
+				getTeamStats,
 			}}
 		>
 			{props.children}

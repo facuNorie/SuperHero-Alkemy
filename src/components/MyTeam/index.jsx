@@ -13,30 +13,34 @@ export default function MyTeam() {
 			className="h-75 w-100 container-fluid overflow-auto containerResults"
 			style={{ backdropFilter: "blur(5px)" }}
 		>
-			<div className="row justify-content-xl-center">
+			<div className="row justify-content-center">
 				{myTeam?.map(hero => {
 					return <CardHeroTeam key={hero.id} hero={hero} />;
 				})}
 				{/* Add hero + */}
-				<div
-					className="col-12 col-sm-4 col-lg-3 my-2"
-					style={{
-						cursor: "pointer",
-						height: !myTeam.length ? "400px" : "auto",
-					}}
-					onClick={() => setLocation("/search")}
-				>
+				{myTeam.length ? (
+					<span></span>
+				) : (
 					<div
-						className="h-100 rounded d-flex justify-content-center align-items-center"
+						className="col-12 col-sm-4 col-lg-3 my-2"
 						style={{
-							border: "2px dashed #ddd",
-							color: "#fff",
-							fontWeight: "bold",
+							cursor: "pointer",
+							height: !myTeam.length ? "400px" : "auto",
 						}}
+						onClick={() => setLocation("/search")}
 					>
-						Add hero +
+						<div
+							className="h-100 rounded d-flex justify-content-center align-items-center"
+							style={{
+								border: "2px dashed #ddd",
+								color: "#fff",
+								fontWeight: "bold",
+							}}
+						>
+							Add hero +
+						</div>
 					</div>
-				</div>
+				)}
 			</div>
 		</div>
 	);
