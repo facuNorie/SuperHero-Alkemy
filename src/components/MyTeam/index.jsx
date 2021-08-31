@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import { AppContext } from "../../context/AppContext";
 import { useLocation } from "wouter";
-import CardHero from "../CardHero";
 import ".././ResultsOfSearch/style.css";
 import CardHeroTeam from "./CardHeroTeam";
 export default function MyTeam() {
