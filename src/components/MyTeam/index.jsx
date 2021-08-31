@@ -25,8 +25,11 @@ export default function MyTeam() {
 						className="col-12 col-sm-4 col-lg-3 my-2"
 						style={{
 							cursor: "pointer",
-							height: !myTeam.length ? "400px" : "auto",
+							height:"400px",
+							width: "300px"
+							
 						}}
+						
 						onClick={() => setLocation("/search")}
 					>
 						<div
