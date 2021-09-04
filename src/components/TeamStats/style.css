@@ -1,0 +1,14 @@
+.ulStats::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+.ulStats::-webkit-scrollbar-thumb {
+  background: rgb(255, 255, 255);
+  border-radius: 3px;
+}
+
+.ulStats::-webkit-scrollbar-track {
+  background: #00000098;
+  border-radius: 3px;
+}
