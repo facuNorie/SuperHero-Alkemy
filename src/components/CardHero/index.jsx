@@ -1,5 +1,4 @@
-import React, { useContext } from "react";
-import { AppContext } from "../../context/AppContext";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addHeroToMyTeam } from "../../actions/herosActions";
 
@@ -8,12 +7,15 @@ export default function CardHero({ hero, is_in_my_team }) {
   const myTeam = useSelector((state) => state?.myTeam);
   const good = useSelector((state) => state?.good);
   const bad = useSelector((state) => state?.bad);
+
   const addSuperHero = (hero) => {
     if (myTeam.length < 6) {
       if (good < 3 && hero.biography.alignment === "good") {
         dispatch(addHeroToMyTeam(hero, "good"));
+        localStorage.setItem("myTeam", JSON.stringify([...myTeam, hero]));
       } else if (bad < 3 && hero.biography.alignment !== "good") {
         dispatch(addHeroToMyTeam(hero, "bad"));
+        localStorage.setItem("myTeam", JSON.stringify([...myTeam, hero]));
       }
       if (good > 2 && hero.biography.alignment === "good") {
         alert("You can only have 3 heroes");
@@ -24,7 +26,6 @@ export default function CardHero({ hero, is_in_my_team }) {
       alert("Your team is currently full");
     }
   };
-  /* const { addSuperHero } = useContext(AppContext); */
 
   return (
     <div className="col-12 col-sm-6 col-md-4 col-xl-3 my-2" key={hero.id}>
