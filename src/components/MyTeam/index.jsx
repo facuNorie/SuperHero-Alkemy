@@ -3,8 +3,10 @@ import { AppContext } from "../../context/AppContext";
 import { useLocation } from "wouter";
 import ".././ResultsOfSearch/style.css";
 import CardHeroTeam from "./CardHeroTeam";
+import { useSelector } from "react-redux";
 export default function MyTeam() {
-  const { myTeam } = useContext(AppContext);
+  const myTeam = useSelector((state) => state?.myTeam);
+  /* const { myTeam } = useContext(AppContext); */
   const [, setLocation] = useLocation();
 
   return (
@@ -17,7 +19,7 @@ export default function MyTeam() {
           return <CardHeroTeam key={hero.id} hero={hero} />;
         })}
         {/* Add hero + */}
-        {myTeam.length ? (
+        {myTeam?.length ? (
           <span></span>
         ) : (
           <div

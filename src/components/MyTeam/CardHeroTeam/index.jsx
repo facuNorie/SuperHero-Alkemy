@@ -3,8 +3,14 @@ import { AppContext } from "../../../context/AppContext";
 import ReactCardFlip from "react-card-flip";
 import Powerstats from "../../Powerstats";
 import HeroDetails from "../../HeroDetails";
+import { useDispatch, useSelector } from "react-redux";
+import { removeHeroFromTeam } from "../../../actions/herosActions";
 export default function CardHeroTeam({ hero }) {
-  const { removeSuperHero } = useContext(AppContext);
+  const myTeam = useSelector((state) => state?.myTeam);
+  const dispatch = useDispatch();
+  const removeSuperHero = (hero) => {
+    dispatch(removeHeroFromTeam(hero, hero.biography.alignment));
+  };
   const [isFlipped, setIsFlipped] = useState(false);
   const handleClickFlipped = () => {
     setIsFlipped(!isFlipped);
@@ -31,7 +37,7 @@ export default function CardHeroTeam({ hero }) {
             <div className="mt-1">
               <div className="d-flex justify-content-evenly">
                 <button
-                  onClick={() => removeSuperHero(hero.id)}
+                  onClick={() => removeSuperHero(hero)}
                   className="btn btn-danger"
                 >
                   <svg
