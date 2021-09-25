@@ -1,5 +1,4 @@
-import React, { useContext } from "react";
-import { AppContext } from "../../context/AppContext";
+import React from "react";
 import Spinner from ".././Spinner";
 import CardHero from "../CardHero";
 import { useSelector } from "react-redux";
@@ -7,7 +6,8 @@ import "./style.css";
 export default function ResulsOfSearch() {
   const listOfResults = useSelector((state) => state?.searchResults);
   const myTeam = useSelector((state) => state?.myTeam);
-  const { top, spinner } = useContext(AppContext);
+  const top = useSelector((state) => state?.top);
+  const spinner = useSelector((state) => state?.spinner);
   const idAllTeam = myTeam?.map((hero) => hero.id);
   return (
     <div

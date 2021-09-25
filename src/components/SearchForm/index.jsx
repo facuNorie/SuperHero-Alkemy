@@ -1,21 +1,25 @@
-import React, { useContext } from "react";
+import React from "react";
 import { Formik, Form, Field } from "formik";
-import { AppContext } from "../../context/AppContext";
 import ErrorInput from "../ErrorInput";
 import axios from "axios";
-import { useDispatch } from "react-redux";
-import { getHerosResults } from "../../actions/herosActions";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  getHerosResults,
+  setTop,
+  setSpinner,
+} from "../../actions/herosActions";
 
 export default function SearchForm() {
+  const top = useSelector((state) => state?.top);
   const dispatch = useDispatch();
-  const { top, setTop, setListOfResults, setSpinner } = useContext(AppContext);
+
   const getSuperHero = (hero) => {
     try {
       axios
         .get(`https://superheroapi.com/api.php/372344864528011/search/${hero}`)
         .then((res) => {
           dispatch(getHerosResults(res?.data.results));
-          setSpinner(false);
+          dispatch(setSpinner(false));
         })
         .catch((e) => console.log(e));
     } catch (error) {
@@ -25,8 +29,8 @@ export default function SearchForm() {
   };
   const searchSuperHero = (search) => {
     getSuperHero(search);
-    setTop(true);
-    setSpinner(true);
+    dispatch(setTop(true));
+    dispatch(setSpinner(true));
   };
   return (
     <div className="w-50">

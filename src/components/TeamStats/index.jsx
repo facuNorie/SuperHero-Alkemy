@@ -1,13 +1,51 @@
-import React, { useContext, useEffect, useState } from "react";
-import { AppContext } from "../../context/AppContext";
+import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import "./style.css";
 
 export default function TeamStats() {
-  const { getTeamStats, myTeam } = useContext(AppContext);
+  const myTeam = useSelector((state) => state?.myTeam);
   const [globalStats, setGlobalStats] = useState([]);
   const [higherStat, setHigherStat] = useState([]);
   const [avgHeight, setAvgHeight] = useState("");
   const [avgWeight, setAvgWeight] = useState("");
+
+  const getTeamStats = () => {
+    /* No me gustó esta funcion*/
+    let powerstats = myTeam?.map((hero) => hero.powerstats);
+    let combat = powerstats.map((stats) => parseInt(stats.combat));
+    combat = combat?.reduce(
+      (accumulator, currentValue) => accumulator + currentValue
+    );
+    let durability = powerstats.map((stats) => parseInt(stats.durability));
+    durability = durability?.reduce(
+      (accumulator, currentValue) => accumulator + currentValue
+    );
+    let intelligence = powerstats.map((stats) => parseInt(stats.intelligence));
+    intelligence = intelligence?.reduce(
+      (accumulator, currentValue) => accumulator + currentValue
+    );
+    let power = powerstats.map((stats) => parseInt(stats.power));
+    power = power?.reduce(
+      (accumulator, currentValue) => accumulator + currentValue
+    );
+    let speed = powerstats.map((stats) => parseInt(stats.speed));
+    speed = speed?.reduce(
+      (accumulator, currentValue) => accumulator + currentValue
+    );
+    let strength = powerstats.map((stats) => parseInt(stats.strength));
+    strength = strength?.reduce(
+      (accumulator, currentValue) => accumulator + currentValue
+    );
+    return [
+      { powername: "Combat", powervalue: combat },
+      { powername: "Durability", powervalue: durability },
+      { powername: "Intelligence", powervalue: intelligence },
+      { powername: "Power", powervalue: power },
+      { powername: "Speed", powervalue: speed },
+      { powername: "Strength", powervalue: strength },
+    ];
+  };
+
   const getBestStat = () => {
     let PowerValues = globalStats?.map((stat) => stat.powervalue);
     let HigherPoweralue = Math.max(...PowerValues);
@@ -15,6 +53,7 @@ export default function TeamStats() {
       globalStats?.filter((stat) => stat.powervalue === HigherPoweralue)
     );
   };
+
   const getAverage = () => {
     /* No funciona con toneladas o metros */
     let height = myTeam.map((hero) => hero.appearance.height[1]);
@@ -35,9 +74,11 @@ export default function TeamStats() {
       ? (setGlobalStats(Object.values(getTeamStats())), getAverage())
       : "";
   }, [myTeam]);
+
   useEffect(() => {
     globalStats.length ? getBestStat() : "";
   }, [globalStats]);
+
   return (
     <div className="h-15 w-100 container-fluid">
       {higherStat.length ? (
