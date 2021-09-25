@@ -21,3 +21,17 @@ export function removeHeroFromTeam(hero, alignment) {
     idHeroToRemove: hero.id,
   };
 }
+
+export function setTop(value) {
+  return {
+    type: "@ui/top",
+    payload: value,
+  };
+}
+
+export function setSpinner(value) {
+  return {
+    type: "@ui/spinner",
+    payload: value,
+  };
+}

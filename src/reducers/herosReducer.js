@@ -32,6 +32,7 @@ const herosReducer = (state = initialState, action) => {
       let newTeam = state.myTeam.filter(
         (hero) => hero.id !== action.idHeroToRemove
       );
+      localStorage.setItem("myTeam", JSON.stringify(newTeam));
       if (action.alignment === "good") {
         return {
           ...state,
@@ -45,7 +46,16 @@ const herosReducer = (state = initialState, action) => {
           bad: state.bad - 1,
         };
       }
-
+    case "@ui/top":
+      return {
+        ...state,
+        top: action.payload,
+      };
+    case "@ui/spinner":
+      return {
+        ...state,
+        spinner: action.payload,
+      };
     default:
       return;
   }
