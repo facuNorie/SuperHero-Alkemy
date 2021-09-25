@@ -1,5 +1,4 @@
-import React, { useContext, useState } from "react";
-import { AppContext } from "../../../context/AppContext";
+import React, { useState } from "react";
 import ReactCardFlip from "react-card-flip";
 import Powerstats from "../../Powerstats";
 import HeroDetails from "../../HeroDetails";

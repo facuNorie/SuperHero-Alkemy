@@ -1,12 +1,11 @@
-import React, { useContext } from "react";
-import { AppContext } from "../../context/AppContext";
+import React from "react";
 import { useLocation } from "wouter";
 import ".././ResultsOfSearch/style.css";
 import CardHeroTeam from "./CardHeroTeam";
 import { useSelector } from "react-redux";
 export default function MyTeam() {
   const myTeam = useSelector((state) => state?.myTeam);
-  /* const { myTeam } = useContext(AppContext); */
+
   const [, setLocation] = useLocation();
 
   return (
