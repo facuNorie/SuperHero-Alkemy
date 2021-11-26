@@ -19,4 +19,17 @@ Para tener acceso a la aplicación se requiere de las siguientes credenciales.
 ## Búsqueda de héroes
 
 Una vez logeados, podremos buscar y agregar a nuestro equipo a nuestros héroes favoritos.
+
 ![Gif de busqueda de heroes](./gifs/search_heroes.gif)
+
+## Nuestro equipo
+
+Una vez agregados nuestros héroes al equipo, veremos algo como esto:
+
+![Imagen mi equipo](./gifs/team.png)
+
+## Detalles del equipo
+
+También podremos ver los detalles de cada uno de nuestros héroes y las estadísticas de ellos y del equipo completo.
+
+![Gif equipo completo](./gifs/details_hero.gif)
