@@ -11,10 +11,10 @@ También tendremos un apartado de búsqueda donde podremos encontrar a nuestro s
 
 ## Login
 
-Para tener acceso a la aplicación se requiere de las siguientes credenciales.
+El Login es una simulacion puede entrar con cualquier mail y contraseña, tranquil@ no le va a llegar nada a su casilla
 
-- email: challenge@alkemy.org
-- password: react
+- email: prueba@superheroe.com
+- password: test
 
 ## Búsqueda de héroes
 
