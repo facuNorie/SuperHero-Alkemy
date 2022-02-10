@@ -3,6 +3,8 @@
 Con esta aplicación podremos crear nuestro propio equipo de superhéroes, y tendremos a disposición datos sobre el mismo, así como sus estadísticas, su nivel individual y grupal.
 También tendremos un apartado de búsqueda donde podremos encontrar a nuestro superhéroe favorito y agregarlo a nuestro equipo.
 
+Link a la demo: https://deploy-superhero.vercel.app
+
 ## Instalación
 
 - Clonar el repositorio `git clone https://github.com/facuNorie/SuperHero-Alkemy.git`
