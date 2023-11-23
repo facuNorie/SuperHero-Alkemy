@@ -16,7 +16,7 @@ export default function LoginForm() {
         },
       })
         .then((res) => {
-          localStorage.setItem('token', res?.data?.token)
+          localStorage.setItem('token', ':)')
           setLocation('/home')
         })
         .catch((e) => {
