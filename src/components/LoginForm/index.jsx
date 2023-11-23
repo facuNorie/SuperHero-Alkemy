@@ -7,25 +7,10 @@ import ErrorInput from '.././ErrorInput'
 export default function LoginForm() {
   const [, setLocation] = useLocation()
   const sendLoginForm = (email, password) => {
-    try {
-      fetch('http://challenge-react.alkemy.org', {
-        method: 'post',
-        body: {
-          email: email,
-          password: password,
-        },
-      })
-        .then((res) => {
-          localStorage.setItem('token', ':)')
-          setLocation('/home')
-        })
-        .catch((e) => {
-          alert('Unauthorized')
-        })
-    } catch (error) {
-      console.log(error)
-    }
+    localStorage.setItem('token', ':)')
+    setLocation('/home')
   }
+
   return (
     <>
       <div className='container py-5 px-4 shadow-lg bg-light rounded col-12 col-md-5'>
